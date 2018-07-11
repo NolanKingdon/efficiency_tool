@@ -10,15 +10,17 @@ class TaskMaster extends Component {
       tasks: [],
       sortStatus: "newest"
     }
-    this.statusUpdater = this.statusUpdater.bind(this);
-    this.tasksUpdater = this.tasksUpdater.bind(this);
+    this.listStateUpdater = this.listStateUpdater.bind(this);
+    this.taskSorter = this.taskSorter.bind(this);
   }
 
 //When component mounts, we pull from firebase.
   componentDidMount(){
     fbConTodos.on("value", add => {
       let todos = [];
+      let sortStatus = this.state.sortStatus;
       add.forEach(task => {
+
         const values = task.val();
         const school = values.school;
         const dueDate = values.due;
@@ -27,20 +29,34 @@ class TaskMaster extends Component {
         const taskKey = task.key;
 
         todos.push([school, dueDate, submitDate, taskDescription, taskKey]);
+
       })
+      this.taskSorter(sortStatus, todos);
       //State is set with current firebase
-      this.setState({tasks: todos})
+      //this.setState({tasks: todos})
     })
   }
 //Updating state from Child
-  statusUpdater(newStatus) {
-    console.log("Status Updater firing: ", newStatus);
+  listStateUpdater(newStatus, newList) {
     this.setState({sortStatus: newStatus});
   }
-//Updating state from child
-  tasksUpdater(newTasks){
-    console.log("Task Updater firing: ", newTasks);
-    this.setState({tasks: newTasks})
+
+  taskSorter(sortStatus, todos){
+    if(sortStatus === 'newest'){
+      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
+    } else if (sortStatus === 'oldest'){
+      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
+      todos.reverse();
+    } else if (sortStatus === "alphabetical"){
+      //Specify which you want to sort by - Right now it doesn't really work.
+      todos.sort();
+    } else if (sortStatus === "alphabeticalR"){
+      todos.sort();
+      todos.reverse();
+    } else {
+      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
+    }
+    this.setState({tasks: todos})
   }
 
   render() {
@@ -49,8 +65,8 @@ class TaskMaster extends Component {
         <TodoList
           tasks = { this.state.tasks }
           sortStatus = { this.state.sortStatus }
-          statusUpdater = { this.statusUpdater }
-          tasksUpdater = { this.tasksUpdater }
+          listUpdater = { this.listStateUpdater }
+          taskSorter = { this.taskSorter }
         />
         <hr/>
       </div>

@@ -4,33 +4,10 @@ import AddTodoItem from './addTodoItem';
 
 class TodoList extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      sortStatus: ""
+  componentDidUpdate(prevProps){
+    if(this.props.sortStatus !== prevProps.sortStatus){
+      this.props.taskSorter(this.props.sortStatus, this.props.tasks);
     }
-
-  }
-//When the component mounts, we apply a sort to see how we want to present it
-  componentDidMount(){
-    console.log("Props Tasks: ", this.props.tasks);
-    let todos = this.props.tasks;
-    let sortStatus = this.props.sortStatus;
-
-    if(sortStatus === 'newest'){
-      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-    } else if (sortStatus === 'oldest'){
-      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-      todos.reverse();
-    } else if (sortStatus === "alphabetical"){
-      todos.sort();
-    } else if (sortStatus === "alphabeticalR"){
-      todos.sort();
-      todos.reverse();
-    } else {
-      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-    }
-    this.props.tasksUpdater(todos);
   }
 
   render(){
@@ -38,7 +15,9 @@ class TodoList extends Component {
       <div>
         <h2>TODO List</h2>
         <AddTodoItem />
-        <select>
+        <select
+          onChange = {event => this.props.listUpdater(event.target.value, this.props.tasks)}
+        >
           <option value = "newest">Newest First</option>
           <option value = "oldest">Oldest First</option>
           <option value = "alphabetical">Alphabetically</option>
