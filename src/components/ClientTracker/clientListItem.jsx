@@ -3,10 +3,6 @@ import { fbConClients } from '../../firebase.js';
 
 class ClientListItem extends Component {
 
-  constructor(props){
-    super(props)
-  }
-
   remove(clientKey){
     fbConClients.child(clientKey).remove();
   }

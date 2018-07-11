@@ -15,7 +15,6 @@ class ClientList extends Component {
       this.setState({
         clients: clientList
       })
-      console.log("this.state.clients: ", this.state.clients);
     })
   }
 
@@ -28,7 +27,7 @@ class ClientList extends Component {
     }
   }
   checkBoxValueHandler = (boxValue) => {
-    let currentSelected = [];
+//    let currentSelected = [];
     // Maybe ditch the whole checkbox idea?
 
     // if(boxValue.checked){

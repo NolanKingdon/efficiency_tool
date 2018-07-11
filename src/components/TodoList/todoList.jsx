@@ -1,76 +1,36 @@
 import React, { Component } from 'react';
-import { fbConTodos } from '../../firebase';
 import TodoListItem from './todoListItem';
 import AddTodoItem from './addTodoItem';
 
 class TodoList extends Component {
 
-  componentDidMount(){
-    fbConTodos.on("value", add => {
-      let todos = [];
-      add.forEach(task => {
-        const values = task.val();
-        const school = values.school;
-        const dueDate = values.due;
-        const submitDate = values.submitted;
-        const taskDescription = values.task;
-        const taskKey = task.key;
-
-        todos.push([school, dueDate, submitDate, taskDescription, taskKey]);
-        switch(this.state.sortStatus){
-          case "newest":
-            todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-            return;
-          case "oldest":
-            console.log("oldest");
-            todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-            todos.reverse();
-            return;
-          case "alphabetical":
-            todos.sort();
-            return;
-          case "alphabeticalR":
-            todos.sort().reverse();
-            return;
-          default:
-            todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-            return;
-        }
-      })
-      this.setState({tasks: todos})
-    })
-  }
-
-  componentDidUpdate(){
-    let todos = this.state.tasks;
-    switch(this.state.sortStatus){
-      case "newest":
-        todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-        return;
-      case "oldest":
-        todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-        todos.reverse();
-        return;
-      case "alphabetical":
-        todos.sort();
-        return;
-      case "alphabeticalR":
-        todos.sort().reverse();
-        return;
-      default:
-        todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
-        return;
-    }
-    this.setState({tasks: todos});
-    this.forceUpdate();
-}
-
   constructor(props){
     super(props);
     this.state = {
-        tasks: [],
-        sortStatus: "alphabeticalR"
-      }
+      sortStatus: ""
+    }
+
+  }
+//When the component mounts, we apply a sort to see how we want to present it
+  componentDidMount(){
+    console.log("Props Tasks: ", this.props.tasks);
+    let todos = this.props.tasks;
+    let sortStatus = this.props.sortStatus;
+
+    if(sortStatus === 'newest'){
+      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
+    } else if (sortStatus === 'oldest'){
+      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
+      todos.reverse();
+    } else if (sortStatus === "alphabetical"){
+      todos.sort();
+    } else if (sortStatus === "alphabeticalR"){
+      todos.sort();
+      todos.reverse();
+    } else {
+      todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });
+    }
+    this.props.tasksUpdater(todos);
   }
 
   render(){
@@ -78,9 +38,7 @@ class TodoList extends Component {
       <div>
         <h2>TODO List</h2>
         <AddTodoItem />
-        <select
-          onChange = {event => this.setState({sortStatus: event.target.value})}
-          >
+        <select>
           <option value = "newest">Newest First</option>
           <option value = "oldest">Oldest First</option>
           <option value = "alphabetical">Alphabetically</option>
@@ -88,7 +46,7 @@ class TodoList extends Component {
         </select>
         <div style = {{height: "70vh", overflowY: "scroll", backgroundColor: "#EEE"}}>
           {
-            this.state.tasks.map((school) => {
+            this.props.tasks.map((school) => {
               const schoolName = school[0],
               dueDate = school[1],
               submitted = school[2],

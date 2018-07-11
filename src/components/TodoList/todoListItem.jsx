@@ -4,10 +4,6 @@ import './css/TodoStyles.css';
 
 class TodoListItem extends Component {
 
-  constructor(props){
-    super(props);
-  }
-
   removeTask(clientKey) {
     fbConTodos.child(clientKey).remove();
   }
