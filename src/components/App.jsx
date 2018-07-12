@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskMaster from './TodoList/TaskMaster';
-import ClientList from './ClientTracker/clientList';
+import ClientMaster from './ClientTracker/clientMaster';
+import './css/app-styles.css'
 
 class App extends Component {
 
@@ -8,8 +9,10 @@ class App extends Component {
     return(
         <div>
           <h1>Efficiency Tool</h1>
-          <ClientList />
-          <TaskMaster />
+          <div className = "grid-wrapper">
+            <ClientMaster />
+            <TaskMaster />
+          </div>
         </div>
     )
   }

@@ -1,0 +1,8 @@
+.list-item-body {
+  display: inline-block;
+  background-color: #CCC;
+  width: 50vw;
+  height: auto;
+  border-radius: 15px;
+  margin: 5;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fbConClients } from '../../firebase.js';
+import './css/client-list-item.css';
 
 class ClientListItem extends Component {
 
@@ -11,21 +12,14 @@ class ClientListItem extends Component {
     return(
       <div>
         <div
-          className = "form-inline"
-          style = {{display: "inline-block",
-                    backgroundColor: "#CCC",
-                    width: "auto",
-                    height: "auto",
-                    borderRadius: "15px",
-                    margin: 5}}
-                    >
-          <div className = "form-group" style = {{position: "relative", top: "7px"}}>
+          className = "form-inline list-item-body"
+        >
+          <div className = "form-group">
             <input
               type = "checkbox"
               value = {this.props.client[0]}
-              onChange = {this.props.valueHandler(this.target)}
               />
-            {this.props.client[0]}
+            this.props.client: {this.props.client[0]} Fix this so it inputs as two seperate items like in the client list so we can be better.
             <button
               type = "button"
               className = "btn btn-danger"

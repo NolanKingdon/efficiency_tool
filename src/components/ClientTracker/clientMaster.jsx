@@ -22,41 +22,33 @@ class ClientList extends Component {
     super(props);
     this.state = {
       clients: [],
-      newClients: "",
-      currentlySelected: []
+      ClientName: "",
+      ClientStatus: ""
     }
-  }
-  checkBoxValueHandler = (boxValue) => {
-//    let currentSelected = [];
-    // Maybe ditch the whole checkbox idea?
-
-    // if(boxValue.checked){
-    //   this.state.currentlySelected.forEach( item => {
-    //     currentSelected.push(boxValue.value);
-    //   })
-    //   console.log("post-add", currentSelected);
-    // } else if(!boxValue.checked){
-    //     currentSelected = this.state.currentlySelected;
-    //
-    //   console.log("Post-pop: ", currentSelected)
-    // }
-    // this.setState({ currentlySelected: currentSelected })
   }
 
   addClient() {
-    let clientInfo = this.state.newClients;
-    fbConClients.push(clientInfo);
+    let clientName = this.state.ClientName;
+    let clientStatus = this.state.ClientStatus;
+    fbConClients.push([clientName, clientStatus]);
   }
 
   render(){
     return(
         <div className = "form-inline">
+          <h3>Client Tracker</h3>
           <div className = "form-group">
             <input
               type = "text"
               placeholder = "Client Name"
               className = "form-control"
-              onChange = { event => this.setState({ newClients : event.target.value})}
+              onChange = { event => this.setState({ ClientName : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "Client Status"
+              className = "form-control"
+              onChange = { event => this.setState({ ClientStatus : event.target.value})}
             />
         <button
           className = "btn btn-info"
@@ -66,12 +58,10 @@ class ClientList extends Component {
             Add New Client
         </button>
 
-        {this.state.clients}
-
         {
-          this.state.clients.map((clientName, clientKey) => {
+          this.state.clients.map((clientName, clientStatus, clientKey) => {
             return(
-              <ClientListItem valueHandler = {this.checkBoxValueHandler} client = {clientName} key = {clientKey} />
+              <ClientListItem client = {clientName} key = {clientKey} />
             )
           })
         }
