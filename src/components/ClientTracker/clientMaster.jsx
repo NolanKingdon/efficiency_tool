@@ -122,21 +122,23 @@ class ClientList extends Component {
           >
               Add New Client
           </button>
-          <table className = "client-listitem-table" style = {{backgroundColor: "#CCC"}}>
-            <tr>
-              <td>Client Name</td>
-              <td>Client Status</td>
-              <td>Client Bundle</td>
-              <td>Training</td>
-              <td>Localization</td>
-              <td>School Choice</td>
-              <td>Launch Date</td>
-              <td>DataBase</td>
-              <td>Phase</td>
-              <td>Delete Info</td>
-              <td>Edit Info</td>
-            </tr>
-          </table>
+          <div className = "list-item-body">
+            <table className = "client-listitem-table">
+              <tr>
+                <td>Client Name</td>
+                <td>Client Status</td>
+                <td>Client Bundle</td>
+                <td>Training</td>
+                <td>Localiz</td>
+                <td>School Choice</td>
+                <td>Launch Date</td>
+                <td>DataBase</td>
+                <td>Phase</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
         {
           this.state.clients.map((clientName, clientKey) => {
             return(

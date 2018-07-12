@@ -22,7 +22,6 @@ class ClientListItem extends Component {
                 <td>{this.props.client[0][2]}</td>
                 <td>{this.props.client[0][3]}</td>
                 <td>{this.props.client[0][4]}</td>
-                <td>{this.props.client[0][4]}</td>
                 <td>{this.props.client[0][5]}</td>
                 <td>{this.props.client[0][6]}</td>
                 <td>{this.props.client[0][7]}</td>
