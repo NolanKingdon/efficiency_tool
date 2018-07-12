@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fbConClients } from '../../firebase.js';
 import ClientListItem from './clientListItem';
+import "./css/client-list-item.css";
 
 class ClientList extends Component {
 
@@ -23,14 +24,29 @@ class ClientList extends Component {
     this.state = {
       clients: [],
       ClientName: "",
-      ClientStatus: ""
+      ClientStatus: "",
+      ClientBundle: "",
+      ClientTraining: "",
+      Localization: "",
+      SchoolChoice: "",
+      SchoolLocator: "",
+      LaunchDate: "",
+      DataBase: "",
+      Phase: ""
     }
   }
 
   addClient() {
     let clientName = this.state.ClientName;
     let clientStatus = this.state.ClientStatus;
-    fbConClients.push([clientName, clientStatus]);
+    let clientBundle = this.state.ClientBundle;
+    let clientTraining = this.state.ClientTraining;
+    let localization = this.state.Localization;
+    let schoolChoice = this.state.SchoolChoice;
+    let launchDate = this.state.LaunchDate;
+    let db = this.state.DataBase;
+    let phase = this.state.DataBase;
+    fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase]);
   }
 
   render(){
@@ -50,16 +66,79 @@ class ClientList extends Component {
               className = "form-control"
               onChange = { event => this.setState({ ClientStatus : event.target.value})}
             />
-        <button
-          className = "btn btn-info"
-          type = "button"
-          onClick = { () => {this.addClient()} }
-        >
-            Add New Client
-        </button>
+            <input
+              type = "text"
+              placeholder = "Client Bundle"
+              className = "form-control"
+              onChange = { event => this.setState({ ClientBundle : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "Client Training"
+              className = "form-control"
+              onChange = { event => this.setState({ ClientTraining : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "Client Localization"
+              className = "form-control"
+              onChange = { event => this.setState({ Localization : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "School Choice"
+              className = "form-control"
+              onChange = { event => this.setState({ SchoolChoice : event.target.value})}
+            />
+            <input
+              type = "date"
+              placeholder = "Launch Date"
+              className = "form-control"
+              onChange = { event => this.setState({ LaunchDate : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "DataBase"
+              className = "form-control"
+              onChange = { event => this.setState({ DataBase : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "Phase"
+              className = "form-control"
+              onChange = { event => this.setState({ Phase : event.target.value})}
+            />
+            <input
+              type = "text"
+              placeholder = "School Choice"
+              className = "form-control"
+              onChange = { event => this.setState({ SchoolChoice : event.target.value})}
+            />
 
+          <button
+            className = "btn btn-info"
+            type = "button"
+            onClick = { () => {this.addClient()} }
+          >
+              Add New Client
+          </button>
+          <table className = "client-listitem-table">
+            <tr>
+              <td>Client Name</td>
+              <td>Client Status</td>
+              <td>Client Bundle</td>
+              <td>Training</td>
+              <td>Localization</td>
+              <td>School Choice</td>
+              <td>Launch Date</td>
+              <td>DataBase</td>
+              <td>Phase</td>
+              <td>Delete Info</td>
+              <td>Edit Info</td>
+            </tr>
+          </table>
         {
-          this.state.clients.map((clientName, clientStatus, clientKey) => {
+          this.state.clients.map((clientName, clientKey) => {
             return(
               <ClientListItem client = {clientName} key = {clientKey} />
             )
