@@ -49,9 +49,9 @@ class TaskMaster extends Component {
       todos.reverse();
     } else if (sortStatus === "alphabetical"){
       //Specify which you want to sort by - Right now it doesn't really work.
-      todos.sort();
+      todos.sort((a,b) => { return a[0]>b[0]});
     } else if (sortStatus === "alphabeticalR"){
-      todos.sort();
+      todos.sort((a,b) => { return a[0]>b[0]});
       todos.reverse();
     } else {
       todos.sort((a,b) => { return Date.parse(a[1])-Date.parse(b[1]) });

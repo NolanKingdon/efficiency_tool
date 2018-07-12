@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fbConTodos } from '../../firebase';
-import './css/TodoStyles.css';
+import './css/TodoListItemStyles.css';
 
 class TodoListItem extends Component {
 

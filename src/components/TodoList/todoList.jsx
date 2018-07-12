@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoListItem from './todoListItem';
 import AddTodoItem from './addTodoItem';
+import './css/TodoListStyles.css';
 
 class TodoList extends Component {
 
@@ -16,6 +17,7 @@ class TodoList extends Component {
         <h2>TODO List</h2>
         <AddTodoItem />
         <select
+          className = "todo-list-sortbar"
           onChange = {event => this.props.listUpdater(event.target.value, this.props.tasks)}
         >
           <option value = "newest">Newest First</option>
@@ -23,7 +25,7 @@ class TodoList extends Component {
           <option value = "alphabetical">Alphabetically</option>
           <option value = "alphabeticalR">Reverse Alphabetically</option>
         </select>
-        <div style = {{height: "70vh", overflowY: "scroll", backgroundColor: "#EEE"}}>
+        <div className = "todo-list-body">
           {
             this.props.tasks.map((school) => {
               const schoolName = school[0],
