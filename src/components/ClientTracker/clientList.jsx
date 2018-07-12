@@ -26,22 +26,6 @@ class ClientList extends Component {
       currentlySelected: []
     }
   }
-  checkBoxValueHandler = (boxValue) => {
-//    let currentSelected = [];
-    // Maybe ditch the whole checkbox idea?
-
-    // if(boxValue.checked){
-    //   this.state.currentlySelected.forEach( item => {
-    //     currentSelected.push(boxValue.value);
-    //   })
-    //   console.log("post-add", currentSelected);
-    // } else if(!boxValue.checked){
-    //     currentSelected = this.state.currentlySelected;
-    //
-    //   console.log("Post-pop: ", currentSelected)
-    // }
-    // this.setState({ currentlySelected: currentSelected })
-  }
 
   addClient() {
     let clientInfo = this.state.newClients;
