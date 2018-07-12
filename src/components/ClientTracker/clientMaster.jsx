@@ -122,7 +122,7 @@ class ClientList extends Component {
           >
               Add New Client
           </button>
-          <table className = "client-listitem-table">
+          <table className = "client-listitem-table" style = {{backgroundColor: "#CCC"}}>
             <tr>
               <td>Client Name</td>
               <td>Client Status</td>
