@@ -1,0 +1,6 @@
+.todo-list-body {
+  height: 70vh;
+  width: 50vw;
+  overflow-y: scroll;
+  background-color: #EEE;
+}
