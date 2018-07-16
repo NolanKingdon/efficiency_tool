@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.template-listitem-table {
+  font-weight: bold;
+}
+
 .client-listitem-table td {
   /* border: 1px solid black; */
   padding: 10px;

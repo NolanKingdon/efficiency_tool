@@ -45,7 +45,10 @@ class ClientList extends Component {
     let schoolChoice = this.state.SchoolChoice;
     let launchDate = this.state.LaunchDate;
     let db = this.state.DataBase;
-    let phase = this.state.DataBase;
+    let phase = this.state.Phase;
+    let schoolLocator = this.state.schoolLocator;
+    //Adding in the schoolLocator variable breaks this -- NEXT STEPS -- research why.
+    //UPDATE: Probably because the props isn't passing in correctly (Updating with Undefined)
     fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase]);
   }
 
@@ -110,9 +113,9 @@ class ClientList extends Component {
             />
             <input
               type = "text"
-              placeholder = "School Choice"
+              placeholder = "School Locator"
               className = "form-control"
-              onChange = { event => this.setState({ SchoolChoice : event.target.value})}
+              onChange = { event => this.setState({ SchoolLocator : event.target.value})}
             />
 
           <button
@@ -122,8 +125,9 @@ class ClientList extends Component {
           >
               Add New Client
           </button>
+
           <div className = "list-item-body">
-            <table className = "client-listitem-table">
+            <table className = "client-listitem-table template-listitem-table">
               <tr>
                 <td>Client Name</td>
                 <td>Client Status</td>
@@ -131,6 +135,7 @@ class ClientList extends Component {
                 <td>Training</td>
                 <td>Localiz</td>
                 <td>School Choice</td>
+                <td>School Locator</td>
                 <td>Launch Date</td>
                 <td>DataBase</td>
                 <td>Phase</td>
