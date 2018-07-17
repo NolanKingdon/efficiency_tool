@@ -7,7 +7,10 @@ class TodoList extends Component {
 
   componentDidUpdate(prevProps){
     if(this.props.sortStatus !== prevProps.sortStatus){
-      this.props.taskSorter(this.props.sortStatus, this.props.tasks);
+      this.props.taskSorter(this.props.sortStatus, this.props.tasks, this.props.sortDate);
+    }
+    if(this.props.sortDate !== prevProps.sortDate){
+      this.props.taskSorter(this.props.sortStatus, this.props.tasks, this.props.sortDate);
     }
   }
 
@@ -18,16 +21,25 @@ class TodoList extends Component {
         <AddTodoItem />
         <select
           className = "todo-list-sortbar"
-          onChange = {event => this.props.listUpdater(event.target.value, this.props.tasks)}
+          onChange = {event => this.props.listUpdater(event.target.value)}
         >
           <option value = "newest">Newest First</option>
           <option value = "oldest">Oldest First</option>
           <option value = "alphabetical">Alphabetically</option>
           <option value = "alphabeticalR">Reverse Alphabetically</option>
         </select>
+        <select
+          className = "todo-list-sortbar"
+          onChange = {event => this.props.rangeUpdater(event.target.value)}
+        >
+          <option value = "all">All</option>
+          <option value = "today">Today</option>
+          <option value = "three">Next Three Days</option>
+          <option value = "week">Next Week</option>
+        </select>
         <div className = "todo-list-body">
           {
-            this.props.tasks.map((school) => {
+            this.props.newTasks.map((school) => {
               const schoolName = school[0],
               dueDate = school[1],
               submitted = school[2],
@@ -40,7 +52,7 @@ class TodoList extends Component {
                   submitted = {submitted}
                   task = {task}
                   keyVal = {keyVal}
-                  />
+                />
               )
             })
           }
