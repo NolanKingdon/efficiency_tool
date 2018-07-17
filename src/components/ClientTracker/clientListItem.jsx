@@ -49,9 +49,9 @@ class ClientListItem extends Component {
     let launchDate = this.state.LaunchDate;
     let db = this.state.DataBase;
     let phase = this.state.Phase;
-    let schoolLocator = this.state.schoolLocator;
+    let schoolLocator = this.state.SchoolLocator;
 
-    fbConClients.child(clientKey).set([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase])
+    fbConClients.child(clientKey).set([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator])
 
     this.setState({
       editing: false
@@ -172,7 +172,7 @@ class ClientListItem extends Component {
                   type = "text"
                   className = "listitem-edit"
 
-                  onChange = { event => this.setState({ SchoolChoice: event.target.value })}
+                  onChange = { event => this.setState({ SchoolLocator: event.target.value })}
                 />
               </td>
               <td>

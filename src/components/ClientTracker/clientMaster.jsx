@@ -46,10 +46,8 @@ class ClientList extends Component {
     let launchDate = this.state.LaunchDate;
     let db = this.state.DataBase;
     let phase = this.state.Phase;
-    let schoolLocator = this.state.schoolLocator;
-    //Adding in the schoolLocator variable breaks this -- NEXT STEPS -- research why.
-    //UPDATE: Probably because the props isn't passing in correctly (Updating with Undefined)
-    fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase]);
+    let schoolLocator = this.state.SchoolLocator;
+    fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator]);
   }
 
   render(){
