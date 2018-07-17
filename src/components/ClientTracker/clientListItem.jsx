@@ -17,6 +17,8 @@ class ClientListItem extends Component {
 
   editMode(){
     if(!this.state.editing){
+      //Consider moving this out of the component and thinking of a new way to do this.
+      //This doesn't feel very "React"
       this.setState({
         editing: true,
         ClientName: this.props.client[0][0],
