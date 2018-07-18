@@ -10,7 +10,7 @@ class TaskMaster extends Component {
       tasks: [],
       newTasks: [],
       sortStatus: "newest",
-      sortDate: "today"
+      sortDate: "all"
     }
     this.listStateUpdater = this.listStateUpdater.bind(this);
     this.taskSorter = this.taskSorter.bind(this);
@@ -58,7 +58,7 @@ class TaskMaster extends Component {
       todos = todos.filter(task => Date.parse(task[1]) <= (today + 259200000));
       console.log("It is Three");
     } else if(sortDate === "week"){
-      todos = todos.filter(task => Date.parse(task[1]) <= (today + 604800000));  
+      todos = todos.filter(task => Date.parse(task[1]) <= (today + 604800000));
     } else {
       console.log("It is probably All");
     }
