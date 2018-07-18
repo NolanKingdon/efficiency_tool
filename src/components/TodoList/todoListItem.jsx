@@ -9,8 +9,21 @@ class TodoListItem extends Component {
   }
 
   render(){
+    const propDate = Date.parse(this.props.dueDate);
+    console.log(propDate);
+    if(Date.parse(this.props.dueDate) <= (Date.parse(new Date())+604800000)){
+      let priorityColor = {backgroundColor: "Yellow"}
+    }
+    if(Date.parse(this.props.dueDate)<= (Date.parse(new Date())+259200000)){
+      let priorityColor = {backgroundColor: "Orange"}
+    }
+    if(Date.parse(this.props.dueDate)<= Date.parse(new Date())){
+      let priorityColor = {backgroundColor: "Red"}
+    } else {
+      let priorityColor = {backgroundColor: "#CCC"}
+    }
     return(
-      <div key = {this.props.keyVal} className = "todo-item-body">
+      <div key = {this.props.keyVal} className = "todo-item-body" style = {this.priorityColor}>
         <div className = "todo-item-content">
           <h3>{this.props.school}</h3>
           <button
