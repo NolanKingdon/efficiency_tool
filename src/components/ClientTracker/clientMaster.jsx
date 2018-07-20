@@ -149,13 +149,15 @@ class ClientList extends Component {
               </tr>
             </table>
           </div>
-        {
-          this.state.clients.map((clientName, clientKey) => {
-            return(
-              <ClientListItem client = {clientName} key = {clientKey} />
-            )
-          })
-        }
+          <div className = "client-list-body">
+            {
+              this.state.clients.map((clientName, clientKey) => {
+                return(
+                  <ClientListItem client = {clientName} key = {clientKey} />
+                )
+              })
+            }
+          </div>
           </div>
         </div>
     )
