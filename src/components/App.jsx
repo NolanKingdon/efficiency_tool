@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return(
         <div>
-          <h1>Efficiency Tool</h1>
+          <h1 style = {{textAlign: "center"}}>Efficiency Tool</h1>
           <div className = "grid-wrapper">
             <ClientMaster />
             <TaskMaster />

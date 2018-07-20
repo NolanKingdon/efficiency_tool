@@ -62,11 +62,27 @@ class ClientListItem extends Component {
   }
 
   render(){
+    let priorityColor = {backgroundColor: "Green"}
+    const emailDate = Date.parse(this.props.client[0][10]);
+    const today = Date.parse(new Date());
+    if((emailDate+259200000) <= today ){
+      //Orange
+      // priorityColor = "rgba(252,140,12,0.8)";
+      //Yellow
+      priorityColor = "rgba(252,248,12,0.5)";
+    }
+    if((emailDate+604800000) <= today){
+      priorityColor = "rgba(255,35,35,0.8)";
+      //Red
+    }
+    if(emailDate == today) {
+      priorityColor = "#EEE";
+    }
     return(
       <div>
         {!this.state.editing &&
-      <div className = "form-inline list-item-body">
-        <div className = "form-group">
+      <div className = "form-inline list-item-body" >
+        <div className = "form-group" style = {{backgroundColor: priorityColor}}>
           <table className = "client-listitem-table">
             <tr>
               <td><strong>{this.props.client[0][0]}</strong></td>
