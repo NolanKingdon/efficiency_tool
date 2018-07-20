@@ -43,7 +43,7 @@ class AddTodoItem extends Component {
             onChange = { event => this.setState({ due: event.target.value })}
           />
           <button
-            className = "btn btn-control"
+            className = "btn btn-success"
             onClick = {this.addTask}
           >
               Add Task

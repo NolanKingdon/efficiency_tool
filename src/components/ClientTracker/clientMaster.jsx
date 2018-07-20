@@ -159,6 +159,7 @@ class ClientList extends Component {
             }
           </div>
           </div>
+          <hr/>
         </div>
     )
   }
