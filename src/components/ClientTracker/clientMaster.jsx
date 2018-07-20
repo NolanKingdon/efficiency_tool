@@ -32,7 +32,8 @@ class ClientList extends Component {
       SchoolLocator: "",
       LaunchDate: "",
       DataBase: "",
-      Phase: ""
+      Phase: "",
+      LastEmail: ""
     }
   }
 
@@ -47,7 +48,8 @@ class ClientList extends Component {
     let db = this.state.DataBase;
     let phase = this.state.Phase;
     let schoolLocator = this.state.SchoolLocator;
-    fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator]);
+    let lastEmail = this.state.LastEmail;
+    fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator, lastEmail]);
   }
 
   render(){
@@ -115,7 +117,12 @@ class ClientList extends Component {
               className = "form-control"
               onChange = { event => this.setState({ SchoolLocator : event.target.value})}
             />
-
+            <input
+              type = "Date"
+              placeholder = "Last Email"
+              className = "form-control"
+              onChange = { event => this.setState({ LastEmail : event.target.value})}
+            />
           <button
             className = "btn btn-info"
             type = "button"
@@ -137,7 +144,7 @@ class ClientList extends Component {
                 <td>Launch Date</td>
                 <td>DataBase</td>
                 <td>Phase</td>
-                <td></td>
+                <td>Last Email</td>
                 <td></td>
               </tr>
             </table>

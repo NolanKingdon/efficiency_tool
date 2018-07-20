@@ -30,7 +30,8 @@ class ClientListItem extends Component {
         SchoolLocator: this.props.client[0][9],
         LaunchDate: this.props.client[0][6],
         DataBase: this.props.client[0][7],
-        Phase: this.props.client[0][8]
+        Phase: this.props.client[0][8],
+        LastEmail: this.props.client[0][10]
       })
     } else {
       this.setState({
@@ -40,7 +41,6 @@ class ClientListItem extends Component {
   }
 
   updateFirebase(clientKey){
-    console.log(clientKey);
     //Sort of works kind of.
     let clientName = this.state.ClientName;
     let clientStatus = this.state.ClientStatus;
@@ -52,8 +52,9 @@ class ClientListItem extends Component {
     let db = this.state.DataBase;
     let phase = this.state.Phase;
     let schoolLocator = this.state.SchoolLocator;
+    let lastEmail = this.state.LastEmail;
 
-    fbConClients.child(clientKey).set([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator])
+    fbConClients.child(clientKey).set([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator, lastEmail])
 
     this.setState({
       editing: false
@@ -78,20 +79,18 @@ class ClientListItem extends Component {
               <td>{this.props.client[0][6]}</td>
               <td>{this.props.client[0][7]}</td>
               <td>{this.props.client[0][8]}</td>
+              <td>{this.props.client[0][10]}</td>
               <td>
-
                 <button
                   type = "button"
-                  className = "btn btn-success"
+                  className = "btn btn-success client-btn"
                   onClick = {() => this.editMode()}
-                >
+                  >
                   Edit
                 </button>
-              </td>
-              <td>
                 <button
                   type = "button"
-                  className = "btn btn-danger"
+                  className = "btn btn-danger client-btn"
                   onClick = {() => this.remove(this.props.client[1])}
                   >
                   X
@@ -104,7 +103,7 @@ class ClientListItem extends Component {
     }
     {this.state.editing &&
       <div className = "form-inline list-item-body">
-        <div className = "form-group">
+        <div className = "form-group" style = {{overflowX: "scroll"}}>
           <table className = "client-listitem-table">
             <tr>
               <td>
@@ -113,7 +112,6 @@ class ClientListItem extends Component {
                     size = "2"
                     type = "text"
                     className = "listitem-edit"
-
                     onChange = { event => this.setState({ ClientName : event.target.value })}
                   />
               </td>
@@ -123,7 +121,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ ClientStatus: event.target.value })}
                 />
               </td>
@@ -133,7 +130,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ ClientBundle: event.target.value })}
                 />
               </td>
@@ -143,7 +139,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ ClientTraining: event.target.value })}
                 />
               </td>
@@ -153,7 +148,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ Localization: event.target.value })}
                 />
               </td>
@@ -163,7 +157,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ SchoolChoice: event.target.value })}
                 />
               </td>
@@ -173,7 +166,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ SchoolLocator: event.target.value })}
                 />
               </td>
@@ -183,7 +175,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ LaunchDate: event.target.value })}
                 />
               </td>
@@ -193,7 +184,6 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ DataBase: event.target.value })}
                 />
               </td>
@@ -203,8 +193,16 @@ class ClientListItem extends Component {
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
-
                   onChange = { event => this.setState({ Phase: event.target.value })}
+                />
+              </td>
+              <td>
+                <input
+                  placeholder = {this.props.client[0][10]}
+                  size = "4"
+                  type = "text"
+                  className = "listitem-edit"
+                  onChange = { event => this.setState({ LastEmail: event.target.value })}
                 />
               </td>
               <td>
@@ -215,8 +213,6 @@ class ClientListItem extends Component {
                   >
                   Save
                 </button>
-              </td>
-              <td>
                 <button
                   type = "button"
                   className = "btn btn-danger"
