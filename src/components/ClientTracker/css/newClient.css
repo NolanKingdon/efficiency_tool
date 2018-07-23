@@ -1,0 +1,7 @@
+.client-adder {
+  background-color: #EEE;
+  width: 50vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
