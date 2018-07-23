@@ -48,39 +48,48 @@ class NewClientAdder extends Component {
             </div>
             <div>
               Client Status:
-              <input
-                type = "text"
-                placeholder = "Client Status"
+              <select
                 className = "form-control"
                 onChange = { event => this.setState({ ClientStatus : event.target.value})}
-                />
+              >
+                <option>Good</option>
+                <option>Neutral</option>
+                <option>Bad</option>
+                <option>Escalated</option>
+              </select>
+
             </div>
             <div>
               Client Bundle:
-              <input
-                type = "text"
-                placeholder = "Client Bundle"
+              <select
                 className = "form-control"
                 onChange = { event => this.setState({ ClientBundle : event.target.value})}
-                />
-            </div>
+              >
+                <option>Reg Signature</option>
+                <option>Charter Bundle</option>
+                <option>Pub Choice</option>
+                <option>Private Enroll</option>
+              </select>
+              </div>
             <div>
               Client Training:
-              <input
-                type = "text"
-                placeholder = "Client Training"
+              <select
                 className = "form-control"
                 onChange = { event => this.setState({ ClientTraining : event.target.value})}
-                />
+              >
+                <option>Yes</option>
+                <option>No</option>
+              </select>
             </div>
             <div>
               Localization:
-              <input
-                type = "text"
-                placeholder = "Localization"
+              <select
                 className = "form-control"
                 onChange = { event => this.setState({ Localization : event.target.value})}
-                />
+              >
+                <option>No</option>
+                <option>Yes</option>
+              </select>
             </div>
             <div>
               School Choice:
@@ -88,8 +97,8 @@ class NewClientAdder extends Component {
                 className = "form-control"
                 onChange = { event => this.setState({ SchoolChoice : event.target.value})}
                 >
-                <option>Yes</option>
                 <option>No</option>
+                <option>Yes</option>
               </select>
 
             </div>
@@ -103,6 +112,16 @@ class NewClientAdder extends Component {
                 />
             </div>
             <div>
+              School Locator:
+              <select
+                className = "form-control"
+                onChange = { event => this.setState({ SchoolLocator : event.target.value})}
+              >
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </div>
+            <div>
               DataBase:
               <input
                 type = "text"
@@ -113,22 +132,21 @@ class NewClientAdder extends Component {
             </div>
             <div>
               Phase:
-              <input
-                type = "text"
-                placeholder = "Phase"
+              <select
                 className = "form-control"
                 onChange = { event => this.setState({ Phase : event.target.value})}
-                />
+              >
+                <option>Pre-Planning</option>
+                <option>Kickoff</option>
+                <option>No SOW</option>
+                <option>Revisions</option>
+                <option>Readiness</option>
+                <option>Launch</option>
+                <option>Delivery</option>
+                <option>Closed</option>
+              </select>
             </div>
-            <div>
-              School Locator:
-              <input
-                type = "text"
-                placeholder = "School Locator"
-                className = "form-control"
-                onChange = { event => this.setState({ SchoolLocator : event.target.value})}
-                />
-            </div>
+
             <div>
               Last Email:
               <input
