@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskMaster from './TodoList/TaskMaster';
 import ClientMaster from './ClientTracker/clientMaster';
+import TimelineGeneratorMaster from './timeline-generator/TimelineGeneratorMaster';
 import './css/app-styles.css'
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
           <div className = "grid-wrapper">
             <ClientMaster />
             <TaskMaster />
+            <TimelineGeneratorMaster />
           </div>
         </div>
     )
