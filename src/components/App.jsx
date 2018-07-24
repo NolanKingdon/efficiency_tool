@@ -7,7 +7,8 @@ import Logout from './logout/logout'
 import './css/app-styles.css'
 
 class App extends Component {
-
+//Make a state component that has information about what needs to be displayed, then edit the below
+//appropriately. That's how we'll get around using the router twice.
   render() {
     return(
         <div>
