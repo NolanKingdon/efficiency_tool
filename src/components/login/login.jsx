@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./css/styles.css";
 import { browserHistory } from 'react-router';
+//Only need fbCon from firebase, so only pull that.
 import * as firebase from 'firebase';
 
 class Login extends Component {
@@ -16,6 +17,8 @@ class Login extends Component {
   componentDidMount(){
     firebase.auth().onAuthStateChanged(user => {
       if(user) {
+        //Save this then restructure the firebase to be person specific
+        console.log(user.uid);
         browserHistory.push("/app");
       } else {
 
