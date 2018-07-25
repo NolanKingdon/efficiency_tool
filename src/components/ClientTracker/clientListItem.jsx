@@ -21,17 +21,17 @@ class ClientListItem extends Component {
       //This doesn't feel very "React"
       this.setState({
         editing: true,
-        ClientName: this.props.client[0][0],
-        ClientStatus: this.props.client[0][1],
-        ClientBundle: this.props.client[0][2],
-        ClientTraining: this.props.client[0][3],
-        Localization: this.props.client[0][4],
-        SchoolChoice: this.props.client[0][5],
-        SchoolLocator: this.props.client[0][9],
-        LaunchDate: this.props.client[0][6],
-        DataBase: this.props.client[0][7],
-        Phase: this.props.client[0][8],
-        LastEmail: this.props.client[0][10]
+        ClientName: this.props.client[0]["Name"],
+        ClientStatus: this.props.client[0]["Status"],
+        ClientBundle: this.props.client[0]["Bundle"],
+        ClientTraining: this.props.client[0]["Training"],
+        Localization: this.props.client[0]["Localization"],
+        SchoolChoice: this.props.client[0]["Choice"],
+        SchoolLocator: this.props.client[0]["Locator"],
+        LaunchDate: this.props.client[0]["Launch"],
+        DataBase: this.props.client[0]["DataBase"],
+        Phase: this.props.client[0]["Phase"],
+        LastEmail: this.props.client[0]["LastEmail"]
       })
     } else {
       this.setState({
@@ -42,19 +42,31 @@ class ClientListItem extends Component {
 
   updateFirebase(clientKey){
     //Sort of works kind of.
-    let clientName = this.state.ClientName;
-    let clientStatus = this.state.ClientStatus;
-    let clientBundle = this.state.ClientBundle;
-    let clientTraining = this.state.ClientTraining;
-    let localization = this.state.Localization;
-    let schoolChoice = this.state.SchoolChoice;
-    let launchDate = this.state.LaunchDate;
-    let db = this.state.DataBase;
-    let phase = this.state.Phase;
-    let schoolLocator = this.state.SchoolLocator;
-    let lastEmail = this.state.LastEmail;
+    let Name = this.state.ClientName;
+    let Status = this.state.ClientStatus;
+    let Bundle = this.state.ClientBundle;
+    let Training = this.state.ClientTraining;
+    let Localization = this.state.Localization;
+    let Choice = this.state.SchoolChoice;
+    let Launch = this.state.LaunchDate;
+    let DataBase = this.state.DataBase;
+    let Phase = this.state.Phase;
+    let Locator = this.state.SchoolLocator;
+    let LastMail = this.state.LastEmail;
 
-    fbConClients.child(clientKey).set([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator, lastEmail])
+    fbConClients.child(clientKey).set({
+      Name,
+      Status,
+      Bundle,
+      Training,
+      Localization,
+      Choice,
+      Launch,
+      DataBase,
+      Phase,
+      Locator,
+      LastMail
+    })
 
     this.setState({
       editing: false
@@ -62,8 +74,9 @@ class ClientListItem extends Component {
   }
 
   render(){
+
     let priorityColor = {backgroundColor: "Green"}
-    const emailDate = Date.parse(this.props.client[0][10]);
+    const emailDate = Date.parse(this.props.client[0]["LastMail"]);
     const today = Date.parse(new Date());
     if((emailDate+259200000) <= today ){
       //Orange
@@ -85,17 +98,17 @@ class ClientListItem extends Component {
         <div className = "form-group" style = {{backgroundColor: priorityColor}}>
           <table className = "client-listitem-table">
             <tr>
-              <td><strong>{this.props.client[0][0]}</strong></td>
-              <td>{this.props.client[0][1]}</td>
-              <td>{this.props.client[0][2]}</td>
-              <td>{this.props.client[0][3]}</td>
-              <td>{this.props.client[0][4]}</td>
-              <td>{this.props.client[0][5]}</td>
-              <td>{this.props.client[0][9]}</td>
-              <td>{this.props.client[0][6]}</td>
-              <td>{this.props.client[0][7]}</td>
-              <td>{this.props.client[0][8]}</td>
-              <td>{this.props.client[0][10]}</td>
+              <td><strong>{this.props.client[0]["Name"]}</strong></td>
+              <td>{this.props.client[0]["Status"]}</td>
+              <td>{this.props.client[0]["Bundle"]}</td>
+              <td>{this.props.client[0]["Training"]}</td>
+              <td>{this.props.client[0]["Localization"]}</td>
+              <td>{this.props.client[0]["Choice"]}</td>
+              <td>{this.props.client[0]["Locator"]}</td>
+              <td>{this.props.client[0]["Launch"]}</td>
+              <td>{this.props.client[0]["DataBase"]}</td>
+              <td>{this.props.client[0]["Phase"]}</td>
+              <td>{this.props.client[0]["LastMail"]}</td>
               <td>
                 <button
                   type = "button"
@@ -124,7 +137,7 @@ class ClientListItem extends Component {
             <tr>
               <td>
                   <input
-                    placeholder = {this.props.client[0][0]}
+                    placeholder = {this.props.client[0]["Name"]}
                     size = "2"
                     type = "text"
                     className = "listitem-edit"
@@ -133,7 +146,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][1]}
+                  placeholder = {this.props.client[0]["Status"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -142,7 +155,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][2]}
+                  placeholder = {this.props.client[0]["Bundle"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -151,7 +164,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][3]}
+                  placeholder = {this.props.client[0]["Training"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -160,7 +173,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][4]}
+                  placeholder = {this.props.client[0]["Localization"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -169,7 +182,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][5]}
+                  placeholder = {this.props.client[0]["Choice"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -178,7 +191,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][9]}
+                  placeholder = {this.props.client[0]["Localization"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -187,7 +200,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][6]}
+                  placeholder = {this.props.client[0]["Launch"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -196,7 +209,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][7]}
+                  placeholder = {this.props.client[0]["DataBase"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -205,7 +218,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][8]}
+                  placeholder = {this.props.client[0]["Phase"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"
@@ -214,7 +227,7 @@ class ClientListItem extends Component {
               </td>
               <td>
                 <input
-                  placeholder = {this.props.client[0][10]}
+                  placeholder = {this.props.client[0]["LastMail"]}
                   size = "4"
                   type = "text"
                   className = "listitem-edit"

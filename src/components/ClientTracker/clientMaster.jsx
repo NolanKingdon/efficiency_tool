@@ -30,7 +30,6 @@ class ClientList extends Component {
   }
 
   toggleAdd(){
-    console.log("Working")
     if(!this.state.addNew){
       this.setState({
         addNew: true
@@ -40,11 +39,22 @@ class ClientList extends Component {
         addNew: false
       })
     }
-    console.log(this.state);
   }
 
   addClient(clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator, lastEmail) {
-    fbConClients.push([clientName, clientStatus, clientBundle, clientTraining, localization, schoolChoice, launchDate, db, phase, schoolLocator, lastEmail]);
+    fbConClients.push({
+      Name: clientName,
+      Status: clientStatus,
+      Bundle: clientBundle,
+      Training: clientTraining,
+      Localization: localization,
+      Choice: schoolChoice,
+      Launch: launchDate,
+      DataBase: db,
+      Phase: phase,
+      Locator: schoolLocator,
+      LastMail: lastEmail
+    });
   }
 
   render(){
