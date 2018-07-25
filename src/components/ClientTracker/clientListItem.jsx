@@ -91,6 +91,19 @@ class ClientListItem extends Component {
     if(emailDate == today) {
       priorityColor = "#EEE";
     }
+
+    let launchColor = {backgroundColor: "Green"}
+    const launchDate = Date.parse(this.props.client[0]["Launch"]);
+    if(launchDate <= (today + 259200000) ){
+      launchColor = "rgba(252,248,12,0.5)";
+    }
+    if(launchDate <= (today+604800000)){
+      launchColor = "rgba(255,35,35,0.5)";
+    }
+    if(launchDate == today) {
+      launchColor = "rgba(255,35,35,0.8)";
+    }
+
     return(
       <div>
         {!this.state.editing &&
@@ -105,7 +118,7 @@ class ClientListItem extends Component {
               <td>{this.props.client[0]["Localization"]}</td>
               <td>{this.props.client[0]["Choice"]}</td>
               <td>{this.props.client[0]["Locator"]}</td>
-              <td>{this.props.client[0]["Launch"]}</td>
+              <td style = {{ backgroundColor: launchColor }}>{this.props.client[0]["Launch"]}</td>
               <td>{this.props.client[0]["DataBase"]}</td>
               <td>{this.props.client[0]["Phase"]}</td>
               <td>{this.props.client[0]["LastMail"]}</td>
