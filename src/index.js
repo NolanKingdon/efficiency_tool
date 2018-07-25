@@ -6,7 +6,7 @@ import Login from './components/login/login.jsx';
 
 ReactDOM.render(
   <Router path = "/" history = { browserHistory }>
-    <Route path = "/login" component = { Login } />
+    <Route path = "/" component = { Login } />
     <Route path = "/app" component = { App } />
   </Router>, document.getElementById("root")
 )

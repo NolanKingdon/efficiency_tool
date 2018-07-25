@@ -6,7 +6,7 @@ class Logout extends Component {
 
   logout(){
     firebase.auth().signOut().then(() => {
-      browserHistory.push("/login");
+      browserHistory.push("/");
     }).catch(function(error){
       alert(error)
     })
