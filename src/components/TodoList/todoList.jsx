@@ -3,7 +3,6 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import TodoListItem from './todoListItem';
 import AddTodoItem from './addTodoItem';
 import './css/TodoListStyles.css';
-import '../css/transitions.css';
 
 class TodoList extends Component {
 
@@ -59,6 +58,7 @@ class TodoList extends Component {
                     submitted = {submitted}
                     task = {task}
                     keyVal = {keyVal}
+                    key = {keyVal}
                   />
                 )
               })
