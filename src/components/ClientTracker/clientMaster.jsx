@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fbConClients } from '../../firebase.js';
+import { CSSTransitionGroup } from 'react-transition-group';
 import ClientListItem from './clientListItem';
 import NewClientAdder from './newClient';
 import "./css/client-list-item.css";
@@ -85,13 +86,19 @@ class ClientList extends Component {
             </table>
           </div>
           <div className = "client-list-body">
+            <CSSTransitionGroup
+              transitionName="ListItem"
+              transitionEnterTimeout = {500}
+              transitionLeaveTimeout = {300}
+              >
             {
-              this.state.clients.map((clientName, clientKey) => {
-                return(
-                  <ClientListItem client = {clientName} key = {clientKey} />
-                )
-              })
+                this.state.clients.map((clientName, clientKey) => {
+                  return(
+                    <ClientListItem client = {clientName} key = {clientKey} />
+                  )
+                })
             }
+          </CSSTransitionGroup>
           </div>
           <hr/>
         </div>

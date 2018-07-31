@@ -1,0 +1,35 @@
+.FullApp-enter {
+  opacity: 0.01;
+}
+
+.FullApp-enter.FullApp-enter-active {
+  opacity: 1;
+  transition: opacity 400ms ease-in;
+}
+
+.FullApp-leave {
+  opacity: 1;
+}
+
+.FullApp-leave.FullApp-leave-action {
+  opacity: 0.01;
+  transition: opacity 400ms ease-in;
+}
+
+.ListItem-enter {
+  opacity: 0.01;
+}
+
+.ListItem-enter.ListItem-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.ListItem-leave {
+  opacity: 1;
+}
+
+.ListItem-leave.ListItem-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

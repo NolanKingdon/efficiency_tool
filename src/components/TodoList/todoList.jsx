@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
 import TodoListItem from './todoListItem';
 import AddTodoItem from './addTodoItem';
 import './css/TodoListStyles.css';
@@ -38,6 +39,11 @@ class TodoList extends Component {
           <option value = "week">Next Week</option>
         </select>
         <div className = "todo-list-body">
+          <CSSTransitionGroup
+            transitionName="ListItem"
+            transitionEnterTimeout = {500}
+            transitionLeaveTimeout = {300}
+          >
           {
             this.props.newTasks.map((school) => {
               const schoolName = school[0],
@@ -56,6 +62,7 @@ class TodoList extends Component {
               )
             })
           }
+        </CSSTransitionGroup>
         </div>
     </div>
     )
