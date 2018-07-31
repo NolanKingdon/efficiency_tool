@@ -4,6 +4,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import ClientListItem from './clientListItem';
 import NewClientAdder from './newClient';
 import "./css/client-list-item.css";
+import '../css/transitions.css';
 
 class ClientList extends Component {
 
@@ -90,7 +91,7 @@ class ClientList extends Component {
               transitionName="ListItem"
               transitionEnterTimeout = {500}
               transitionLeaveTimeout = {300}
-              >
+            >
             {
                 this.state.clients.map((clientName, clientKey) => {
                   return(

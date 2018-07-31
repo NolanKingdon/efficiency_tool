@@ -14,11 +14,6 @@ class App extends Component {
   render() {
     return(
       //This needs a look at -- TODO -- Not currently firing on page load.
-      <CSSTransitionGroup
-        transitionName="FullApp"
-        transitionEnterTimeout = {400}
-        transitionLeaveTimeout = {400}
-      >
         <div>
           <h1 style = {{textAlign: "center"}}>Efficiency Tool</h1>
           <div className = "logout-widget">
@@ -30,7 +25,6 @@ class App extends Component {
             <TimelineGeneratorMaster />
           </div>
         </div>
-      </CSSTransitionGroup>
     )
   }
 }

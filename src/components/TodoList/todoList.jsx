@@ -3,6 +3,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import TodoListItem from './todoListItem';
 import AddTodoItem from './addTodoItem';
 import './css/TodoListStyles.css';
+import '../css/transitions.css';
 
 class TodoList extends Component {
 
@@ -44,25 +45,25 @@ class TodoList extends Component {
             transitionEnterTimeout = {500}
             transitionLeaveTimeout = {300}
           >
-          {
-            this.props.newTasks.map((school) => {
-              const schoolName = school[0],
-              dueDate = school[1],
-              submitted = school[2],
-              task = school[3],
-              keyVal = school[4];
-              return (
-                <TodoListItem
-                  school = {schoolName}
-                  dueDate = {dueDate}
-                  submitted = {submitted}
-                  task = {task}
-                  keyVal = {keyVal}
-                />
-              )
-            })
-          }
-        </CSSTransitionGroup>
+            {
+              this.props.newTasks.map((school) => {
+                const schoolName = school[0],
+                      dueDate = school[1],
+                      submitted = school[2],
+                      task = school[3],
+                      keyVal = school[4];
+                return (
+                  <TodoListItem
+                    school = {schoolName}
+                    dueDate = {dueDate}
+                    submitted = {submitted}
+                    task = {task}
+                    keyVal = {keyVal}
+                  />
+                )
+              })
+            }
+          </CSSTransitionGroup>
         </div>
     </div>
     )
