@@ -53,14 +53,11 @@ class TaskMaster extends Component {
     const today = Date.parse(new Date());
     if(sortDate === "today"){
       todos = todos.filter(task => Date.parse(task[1]) <= today);
-      console.log(todos);
     } else if(sortDate === "three"){
       todos = todos.filter(task => Date.parse(task[1]) <= (today + 259200000));
-      console.log("It is Three");
     } else if(sortDate === "week"){
       todos = todos.filter(task => Date.parse(task[1]) <= (today + 604800000));
     } else {
-      console.log("It is probably All");
     }
     this.setState({
       newTasks: todos
