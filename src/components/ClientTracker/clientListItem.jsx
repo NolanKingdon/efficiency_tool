@@ -31,7 +31,7 @@ class ClientListItem extends Component {
         LaunchDate: this.props.client[0]["Launch"],
         DataBase: this.props.client[0]["DataBase"],
         Phase: this.props.client[0]["Phase"],
-        LastEmail: this.props.client[0]["LastEmail"]
+        LastEmail: this.props.client[0]["LastMail"]
       })
     } else {
       this.setState({
