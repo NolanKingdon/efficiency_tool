@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
 import TaskMaster from './TodoList/TaskMaster';
 import ClientMaster from './ClientTracker/clientMaster';
 import TimelineGeneratorMaster from './timeline-generator/TimelineGeneratorMaster';
-import Login from './login/login';
 import Logout from './logout/logout';
 import './css/app-styles.css';
 import './css/transitions.css';

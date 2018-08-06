@@ -30,7 +30,7 @@ class NewClientAdder extends Component {
       <div>
         <button
           type = "button"
-          class = "btn btn-warning"
+          className = "btn btn-warning"
           onClick = { () => {this.props.toggleNew()} }
         >
         Show/Hide Client Adder {this.props.showNew}

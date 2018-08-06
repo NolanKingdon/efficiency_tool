@@ -28,7 +28,6 @@ class Login extends Component {
 
   submit(){
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error){
-      const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
     })

@@ -88,7 +88,7 @@ class ClientListItem extends Component {
       priorityColor = "rgba(255,35,35,0.8)";
       //Red
     }
-    if(emailDate == today) {
+    if(emailDate === today) {
       priorityColor = "#EEE";
     }
 
@@ -100,7 +100,7 @@ class ClientListItem extends Component {
     if(launchDate <= (today+604800000)){
       launchColor = "rgba(255,35,35,0.5)";
     }
-    if(launchDate == today) {
+    if(launchDate === today) {
       launchColor = "rgba(255,35,35,0.8)";
     }
 
